@@ -31,7 +31,19 @@ namespace platzi_blobConsole
             string getstring = config["AzureConnection"];
 
             CloudStorageAccount cuentaAlmacenamiento = CloudStorageAccount.Parse(config["AzureConnection"]);
-            
+            CloudBlobClient client = cuentaAlmacenamiento.CreateCloudBlobClient();
+            // los containers no aceptan mayusculas.
+            CloudBlobContainer container = client.GetContainerReference("containernuevo");
+            container.CreateIfNotExists();
+            container.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
+
+            CloudBlockBlob miBlod = container.GetBlockBlobReference("imagetest.jpg");
+            string imageRoot = @"C:\Users\Edgar\OneDrive\Pictures\usuario.png";
+
+            using (var file = System.IO.File.OpenRead(imageRoot))
+            {
+                miBlod.UploadFromStream(file);
+            }
         }
     }
 }
