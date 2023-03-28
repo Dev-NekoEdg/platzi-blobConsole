@@ -9,6 +9,10 @@ using Microsoft.Azure.Storage;
 using System.Threading.Tasks;
 using Microsoft.Azure.Cosmos;
 using System.Security;
+using Azure.Data.Tables;
+using Azure.Data.Tables.Models;
+using Azure;
+using platzi_blobConsole.Models;
 
 namespace platzi_blobConsole
 {
@@ -27,14 +31,21 @@ namespace platzi_blobConsole
             config = builder.Build();
 
             // UploadFile();
-
-            var cosmosConfig = new CosmosConfiguration();
+           var cosmosConfig = new CosmosConfiguration();
             cosmosConfig.EndPoint = config.GetSection("CosmosConfiguration")["EndPoint"];
             cosmosConfig.Key = config.GetSection("CosmosConfiguration")["Key"];
-            cosmosConfig.ContainerName = config.GetSection("CosmosConfiguration")["Container"];
-            cosmosConfig.DatabaseName = config.GetSection("CosmosConfiguration")["DataBase"];
+            cosmosConfig.AccountName = config.GetSection("CosmosConfiguration")["AccountName"];
+            cosmosConfig.DatabaseName = config.GetSection("CosmosConfiguration")["DatabaseName"];
+            cosmosConfig.ContainerName = config.GetSection("CosmosConfiguration")["ContainerName"];
+            cosmosConfig.PartitionKey = config.GetSection("CosmosConfiguration")["PartitionKey"];
 
-            await CreateDB(cosmosConfig);
+            // await CreateDB(cosmosConfig);
+            // await Something(cosmosConfig);
+        }
+
+        private static async Task Something(CosmosConfiguration cosmosConfiguration)
+        {
+            
         }
 
 
@@ -46,13 +57,13 @@ namespace platzi_blobConsole
 
 
 
-            var createdDB = await cosmosClient.CreateDatabaseIfNotExistsAsync(cosmosConfiguration.DatabaseName);
+            // var createdDB = await cosmosClient.CreateDatabaseIfNotExistsAsync(cosmosConfiguration.DatabaseName);
 
-            var containerProps = new ContainerProperties { Id = cosmosConfiguration.ContainerName };
-            await createdDB.Database.CreateContainerIfNotExistsAsync(containerProps);
+            // var containerProps = new ContainerProperties { Id = cosmosConfiguration.AccountName };
+            // await createdDB.Database.CreateContainerIfNotExistsAsync(containerProps);
 
             //var db = cosmosClient.GetDatabase(cosmosConfiguration.DatabaseName);
-            await db.CreateContainerIfNotExistsAsync(containerProps);
+            // await db.CreateContainerIfNotExistsAsync(containerProps);
 
             // Base --> https://www.youtube.com/watch?v=DTb4-79aNNo
             // base 2 --> https://www.youtube.com/watch?v=5ZU2xA_Y3G8
