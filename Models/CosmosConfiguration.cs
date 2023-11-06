@@ -1,4 +1,4 @@
-namespace platzi_blobConsole
+namespace platzi_blobConsole.Models
 {
     public class CosmosConfiguration
     {
@@ -9,6 +9,9 @@ namespace platzi_blobConsole
         public string AccountName { get; set; }
 
         public string DatabaseName { get; set; }
+
+        public string ContainerName { get; set; }
         
+        public string PartitionKey { get; set; }
     }
 }

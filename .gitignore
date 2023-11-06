@@ -2,3 +2,7 @@
 *.jpg
 *.gif
 appsettings.Local.json
+platzi-blobConsole.csproj.nuget.dgspec.json
+platzi-blobConsole.csproj.nuget.g.props
+platzi-blobConsole.csproj.nuget.g.targets
+project.nuget.cache
