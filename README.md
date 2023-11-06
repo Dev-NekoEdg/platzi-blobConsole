@@ -16,9 +16,22 @@ applicacion de consola hecha en VS code para probar y hacer ejecicios de curso [
 * dotnet add package Azure.Data.Tables --version 12.8.0
 
 ----
+
+
+
 **Comandos consola dotnet**
 |Comando |Descripción |
 |:---- |:---- |
 |`dotnet new console -n NombrePryecto` |Crea el proyecto de tipo consola con el nombre. |
 
+## Git Ignore
 
+|line |description |
+|---:|:---|
+|*.jpg|image ext.|
+|*.gif|image ext.|
+|appsettings.Local.json|local configuration|
+|platzi-blobConsole.csproj.nuget.dgspec.json|config file for nuget|
+|platzi-blobConsole.csproj.nuget.g.props|config file for nuget|
+|platzi-blobConsole.csproj.nuget.g.targets|config file for nuget|
+|project.nuget.cache|config file for nuget|
