@@ -10,6 +10,9 @@
     <None Update="appsettings.json">
       <CopytoOutputDirectory>Always</CopytoOutputDirectory>
     </None>
+    <None Update="origin-images">
+      <CopytoOutputDirectory>Always</CopytoOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

@@ -13,6 +13,8 @@ using Azure.Data.Tables;
 using Azure.Data.Tables.Models;
 using Azure;
 using platzi_blobConsole.Models;
+using System.Reflection.Metadata;
+using platzi_blobConsole.Services;
 
 namespace platzi_blobConsole
 {
@@ -30,8 +32,12 @@ namespace platzi_blobConsole
 
             config = builder.Build();
 
-            // UploadFile();
-           var cosmosConfig = new CosmosConfiguration();
+            var blobSectionConfig = config.GetSection("BlobContainerConfiguration");
+            var blobConfig = BlobService.ConfigureConfig(blobSectionConfig);
+            
+            BlobService.UploadFile(blobConfig);
+            
+            var cosmosConfig = new CosmosConfiguration();
             cosmosConfig.EndPoint = config.GetSection("CosmosConfiguration")["EndPoint"];
             cosmosConfig.Key = config.GetSection("CosmosConfiguration")["Key"];
             cosmosConfig.AccountName = config.GetSection("CosmosConfiguration")["AccountName"];
@@ -45,7 +51,7 @@ namespace platzi_blobConsole
 
         private static async Task Something(CosmosConfiguration cosmosConfiguration)
         {
-            
+
         }
 
 
