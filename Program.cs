@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Microsoft.Extensions.Configuration;
+
 using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Azure;
 using Microsoft.Azure.Storage.Blob;
@@ -15,12 +16,14 @@ using Azure;
 using platzi_blobConsole.Models;
 using System.Reflection.Metadata;
 using platzi_blobConsole.Services;
+using System.Collections.Generic;
 
 namespace platzi_blobConsole
 {
     class Program
     {
 
+        // public static IConfiguration config;
         public static IConfigurationRoot config;
 
         static async Task Main(string[] args)
@@ -32,10 +35,15 @@ namespace platzi_blobConsole
 
             config = builder.Build();
 
+            #region Upload files to AzureContainer
+
+            BlobService.MimetypesAzures = config.GetSection("CommonMIMETypes").Get<Dictionary<string, string>>();
             var blobSectionConfig = config.GetSection("BlobContainerConfiguration");
             var blobConfig = BlobService.ConfigureConfig(blobSectionConfig);
             
             BlobService.UploadFile(blobConfig);
+            
+            #endregion
             
             var cosmosConfig = new CosmosConfiguration();
             cosmosConfig.EndPoint = config.GetSection("CosmosConfiguration")["EndPoint"];

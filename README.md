@@ -14,6 +14,16 @@ applicacion de consola hecha en VS code para probar y hacer ejecicios de curso [
 * dotnet add package Microsoft.Azure.Storage.Blob --version 11.2.3
 * dotnet add package Microsoft.Azure.Cosmos --version 3.32.2
 * dotnet add package Azure.Data.Tables --version 12.8.0
+* dotnet add package Microsoft.Extensions.Configuration.Binder --version 8.0.0
+
+
+Microsoft.Extensions.Configuration.Binder is for use Get Extentsion method after IcConfiguration.GetSection()
+
+```
+var test = config.GetSection("CommonMIMETypes").Get<Dictionary<string, string>>();
+```
+
+
 
 ----
 

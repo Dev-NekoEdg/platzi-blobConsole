@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BackUp\\Proyectos\\platzi-blobConsole\\platzi-blobConsole.csproj": {}
+    "C:\\Users\\Edgar\\source\\repos\\platzi-blobConsole\\platzi-blobConsole.csproj": {}
   },
   "projects": {
-    "D:\\BackUp\\Proyectos\\platzi-blobConsole\\platzi-blobConsole.csproj": {
+    "C:\\Users\\Edgar\\source\\repos\\platzi-blobConsole\\platzi-blobConsole.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BackUp\\Proyectos\\platzi-blobConsole\\platzi-blobConsole.csproj",
+        "projectUniqueName": "C:\\Users\\Edgar\\source\\repos\\platzi-blobConsole\\platzi-blobConsole.csproj",
         "projectName": "platzi-blobConsole",
-        "projectPath": "D:\\BackUp\\Proyectos\\platzi-blobConsole\\platzi-blobConsole.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\BackUp\\Proyectos\\platzi-blobConsole\\obj\\",
+        "projectPath": "C:\\Users\\Edgar\\source\\repos\\platzi-blobConsole\\platzi-blobConsole.csproj",
+        "packagesPath": "C:\\Users\\Edgar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Edgar\\source\\repos\\platzi-blobConsole\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Edgar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -56,11 +56,19 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.Extensions.Configuration.FileExtensions": {
               "target": "Package",
               "version": "[7.0.0, )"
             },
             "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "System.Configuration.ConfigurationManager": {
               "target": "Package",
               "version": "[7.0.0, )"
             }
@@ -81,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

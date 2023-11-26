@@ -1,7 +1,7 @@
 
 namespace platzi_blobConsole.Models
 {
-    public class BlobConfigration
+    public class BlobConfiguration
     {
         public string Connection { get; set; }
         public string DestinationPath { get; set; }

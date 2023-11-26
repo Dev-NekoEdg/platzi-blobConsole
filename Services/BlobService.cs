@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -12,10 +13,11 @@ namespace platzi_blobConsole.Services
 {
     public static class BlobService
     {
+        public static Dictionary<string, string> MimetypesAzures;
 
-        public static BlobConfigration ConfigureConfig(IConfigurationSection config)
+        public static BlobConfiguration ConfigureConfig(IConfigurationSection config)
         {
-            return new BlobConfigration
+            return new BlobConfiguration
             {
                 Connection = config["StorageAcccount"].ToString(),
                 OriginPath = config["OriginDestination"].ToString(),
@@ -25,7 +27,7 @@ namespace platzi_blobConsole.Services
 
         }
 
-        public static void UploadFile(BlobConfigration config)
+        public static void UploadFile(BlobConfiguration config)
         {
             // Console.WriteLine("Hello World!");
             Console.WriteLine(config.Connection);
@@ -56,26 +58,36 @@ namespace platzi_blobConsole.Services
             var filesFiltered = filesInFolder.ToList().Where(x=> !x.Contains(config.Prefix));
             foreach(var rootFile in filesFiltered)
             {
-                var newNameBlob = string.Concat(Guid.NewGuid().ToString(),Path.GetExtension(rootFile));
+                var x = GetMIMEContent(Path.GetExtension(rootFile));
                 
-                CloudBlockBlob miBlod = container.GetBlockBlobReference(newNameBlob.Replace("-",""));
-                var file = File.OpenRead(rootFile);
-                miBlod.UploadFromStream(file);
-                // TODO: validateExtensions.
-                // miBlod.Properties.ContentType = "image/jpeg";
-                file.Close();
+                // var newNameBlob = string.Concat(Guid.NewGuid().ToString(),Path.GetExtension(rootFile));
+                
+                // CloudBlockBlob miBlod = container.GetBlockBlobReference(newNameBlob.Replace("-",""));
+                // var file = File.OpenRead(rootFile);
+                // miBlod.UploadFromStream(file);
+                // miBlod.Properties.ContentType = GetMIMEContent(Path.GetExtension(rootFile));
+                // miBlod.SetProperties();
+                // // TODO: validateExtensions.
+                // // miBlod.Properties.ContentType = "image/jpeg";
+                // file.Close();
 
-                // Moving files already on blobstorage
-                var fileToMove = string.Concat(config.Prefix, Path.GetFileName(rootFile));
+                // // Moving files already on blobstorage
+                // var fileToMove = string.Concat(config.Prefix, Path.GetFileName(rootFile));
 
-                string completePathFileToMove = string.Concat(
-                    rootFile.Replace(Path.GetFileName(rootFile),string.Empty),
-                    fileToMove);
+                // string completePathFileToMove = string.Concat(
+                //     rootFile.Replace(Path.GetFileName(rootFile),string.Empty),
+                //     fileToMove);
 
-                File.Delete(completePathFileToMove);
-                File.Move(rootFile, completePathFileToMove);
-
+                // File.Delete(completePathFileToMove);
+                // File.Move(rootFile, completePathFileToMove);
             }
+        }
+
+        private static string GetMIMEContent(string ext)
+        {
+            var mimeDefault= MimetypesAzures.Single(x=> x.Key.ToLower() =="default" );
+            var mimeFound =  MimetypesAzures.FirstOrDefault(x=> ext.Contains(x.Value));
+            return mimeFound.Equals(default) ? mimeDefault.Value : mimeDefault.Value;
         }
     }
 }
