@@ -24,6 +24,12 @@ applicacion de consola hecha en VS code para probar y hacer ejecicios de curso [
 |:---- |:---- |
 |`dotnet new console -n NombrePryecto` |Crea el proyecto de tipo consola con el nombre. |
 
+**Common MIME types**
+
+MIME types list got from [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)
+
+
+
 ## Git Ignore
 
 |line |description |
