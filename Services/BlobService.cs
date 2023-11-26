@@ -31,7 +31,6 @@ namespace platzi_blobConsole.Services
         {
             // Console.WriteLine("Hello World!");
             Console.WriteLine(config.Connection);
-
             Console.WriteLine($"Conexion de Azure: {config.Connection}");
 
             CloudStorageAccount cuentaAlmacenamiento = CloudStorageAccount.Parse(config.Connection);
@@ -58,36 +57,34 @@ namespace platzi_blobConsole.Services
             var filesFiltered = filesInFolder.ToList().Where(x=> !x.Contains(config.Prefix));
             foreach(var rootFile in filesFiltered)
             {
-                var x = GetMIMEContent(Path.GetExtension(rootFile));
                 
-                // var newNameBlob = string.Concat(Guid.NewGuid().ToString(),Path.GetExtension(rootFile));
+                var newNameBlob = string.Concat(Guid.NewGuid().ToString(),Path.GetExtension(rootFile));
                 
-                // CloudBlockBlob miBlod = container.GetBlockBlobReference(newNameBlob.Replace("-",""));
-                // var file = File.OpenRead(rootFile);
-                // miBlod.UploadFromStream(file);
-                // miBlod.Properties.ContentType = GetMIMEContent(Path.GetExtension(rootFile));
-                // miBlod.SetProperties();
-                // // TODO: validateExtensions.
-                // // miBlod.Properties.ContentType = "image/jpeg";
-                // file.Close();
+                CloudBlockBlob miBlod = container.GetBlockBlobReference(newNameBlob.Replace("-",""));
+                var file = File.OpenRead(rootFile);
+                miBlod.UploadFromStream(file);
+                miBlod.Properties.ContentType = GetMIMEContent(Path.GetExtension(rootFile));
+                miBlod.SetProperties();
+                // TODO: validateExtensions.
+                // miBlod.Properties.ContentType = "image/jpeg";
+                 file.Close();
 
                 // // Moving files already on blobstorage
-                // var fileToMove = string.Concat(config.Prefix, Path.GetFileName(rootFile));
+                var fileToMove = string.Concat(config.Prefix, Path.GetFileName(rootFile));
+                string completePathFileToMove = string.Concat(
+                    rootFile.Replace(Path.GetFileName(rootFile),string.Empty),
+                    fileToMove);
 
-                // string completePathFileToMove = string.Concat(
-                //     rootFile.Replace(Path.GetFileName(rootFile),string.Empty),
-                //     fileToMove);
-
-                // File.Delete(completePathFileToMove);
-                // File.Move(rootFile, completePathFileToMove);
+                File.Delete(completePathFileToMove);
+                File.Move(rootFile, completePathFileToMove);
             }
         }
 
         private static string GetMIMEContent(string ext)
         {
             var mimeDefault= MimetypesAzures.Single(x=> x.Key.ToLower() =="default" );
-            var mimeFound =  MimetypesAzures.FirstOrDefault(x=> ext.Contains(x.Value));
-            return mimeFound.Equals(default) ? mimeDefault.Value : mimeDefault.Value;
+            var mimeFound =  MimetypesAzures.FirstOrDefault(x=> ext.Contains(x.Key));
+            return string.IsNullOrEmpty(mimeFound.Value) ? mimeDefault.Value : mimeFound.Value;
         }
     }
 }

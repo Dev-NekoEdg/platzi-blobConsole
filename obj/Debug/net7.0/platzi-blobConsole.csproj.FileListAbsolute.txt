@@ -78,11 +78,6 @@ D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win-x64\native\
 D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win-x64\native\msvcp140.dll
 D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win-x64\native\vcruntime140.dll
 D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win-x64\native\vcruntime140_1.dll
-D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
-D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
-D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
-D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
-D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\Azure.Data.Tables.dll
 C:\Users\Edgar\source\repos\platzi-blobConsole\bin\Debug\net7.0\Microsoft.Azure.Cosmos.ServiceInterop.dll
 C:\Users\Edgar\source\repos\platzi-blobConsole\bin\Debug\net7.0\Cosmos.CRTCompat.dll
@@ -117,3 +112,11 @@ C:\Users\Edgar\source\repos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win\lib
 C:\Users\Edgar\source\repos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\Edgar\source\repos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Edgar\source\repos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Binder.dll
+D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\System.Diagnostics.EventLog.dll
+D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
+D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Diagnostics.EventLog.Messages.dll
+D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Diagnostics.EventLog.dll
+D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
+D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
+D:\BackUp\Proyectos\platzi-blobConsole\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
