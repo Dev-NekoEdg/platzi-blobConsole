@@ -44,18 +44,27 @@ namespace platzi_blobConsole
             BlobService.UploadFile(blobConfig);
             */
             #endregion
-            
-            var cosmosConfig = new CosmosConfiguration();
-            cosmosConfig.EndPoint = config.GetSection("CosmosConfiguration")["EndPoint"];
-            cosmosConfig.Key = config.GetSection("CosmosConfiguration")["Key"];
-            cosmosConfig.AccountName = config.GetSection("CosmosConfiguration")["AccountName"];
-            cosmosConfig.DatabaseName = config.GetSection("CosmosConfiguration")["DatabaseName"];
-            cosmosConfig.ContainerName = config.GetSection("CosmosConfiguration")["ContainerName"];
-            cosmosConfig.PartitionKey = config.GetSection("CosmosConfiguration")["PartitionKey"];
-            
+
+            var azureTableSectionConfig = config.GetSection("AzureTableConfiguration");
+            var azureTableConfig = AzureTableService.ConfigureConfig(azureTableSectionConfig);
+
+            var tableServiceClient = await AzureTableService.CreateTableServiceClient(azureTableConfig);
+            var tableClient = await AzureTableService.CreateTable(tableServiceClient, azureTableConfig);
+
+            Pet newPet = new()
+            {
+                PartitionKey = azureTableConfig.PartitionKey,
+                Name = "Nikkita",
+                Color = "Blanco",
+                PetType = "Felino",
+                Age = 9
+            };
+
+            var result = await tableClient.AddEntityAsync<Pet>(newPet);
+
         }
 
-        private static async Task CreateDB(CosmosConfiguration cosmosConfiguration)
+        private static async Task CreateDB(AzureTableConfiguration cosmosConfiguration)
         {
             CosmosClient cosmosClient = new CosmosClient(cosmosConfiguration.EndPoint, cosmosConfiguration.Key);
             var db = cosmosClient.GetDatabase("TablesDB");
