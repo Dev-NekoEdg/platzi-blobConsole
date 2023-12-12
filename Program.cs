@@ -51,17 +51,20 @@ namespace platzi_blobConsole
             var tableServiceClient = await AzureTableService.CreateTableServiceClient(azureTableConfig);
             var tableClient = await AzureTableService.CreateTable(tableServiceClient, azureTableConfig);
 
-            Pet newPet = new()
-            {
-                PartitionKey = azureTableConfig.PartitionKey,
-                Name = "Nikkita",
-                Color = "Blanco",
-                PetType = "Felino",
-                Age = 9
-            };
-
-            var result = await tableClient.AddEntityAsync<Pet>(newPet);
-
+            // Insert
+            // Pet newPet = new()
+            // {
+            //      rowkey = Guid.NewGuid().ToString();
+            //     PartitionKey = azureTableConfig.PartitionKey,
+            //     Name = "Nikkita",
+            //     Color = "Blanco",
+            //     PetType = "Felino",
+            //     Age = 9
+            // };
+            // await tableClient.AddEntityAsync<Pet>(newPet);
+            var getData = await tableClient.GetEntityIfExistsAsync<Pet>(azureTableConfig.PartitionKey, "9d868c22-4070-4cb5-99ea-80d66aef0b22", default, default);
+            getData.Value.Color = "blanco con cola y cabeza cafe";
+            await tableClient.UpsertEntityAsync<Pet>(getData.Value);
         }
 
         private static async Task CreateDB(AzureTableConfiguration cosmosConfiguration)

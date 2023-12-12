@@ -25,10 +25,12 @@ namespace platzi_blobConsole.Models
     {
         #region ITableEntity Properties implementations
         public string PartitionKey { get; set; }
-        public string RowKey { 
-            get => Guid.NewGuid().ToString(); 
-            set => RowKey = value; 
-            }
+
+        public string RowKey {get; set; }
+        // { 
+        //     get => Guid.NewGuid().ToString(); 
+        //     set => RowKey = value; 
+        //     }
         public ETag ETag { get; set; } = default!;
         public DateTimeOffset? Timestamp { get; set; } = default!;
         #endregion
