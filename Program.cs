@@ -44,44 +44,35 @@ namespace platzi_blobConsole
             BlobService.UploadFile(blobConfig);
             */
             #endregion
+        }
 
+        private static async Task CosmosDBImplementation()
+        {
             var azureTableSectionConfig = config.GetSection("AzureTableConfiguration");
             var azureTableConfig = AzureTableService.ConfigureConfig(azureTableSectionConfig);
 
             var tableServiceClient = await AzureTableService.CreateTableServiceClient(azureTableConfig);
             var tableClient = await AzureTableService.CreateTable(tableServiceClient, azureTableConfig);
 
-            // Insert
-            // Pet newPet = new()
-            // {
-            //      rowkey = Guid.NewGuid().ToString();
-            //     PartitionKey = azureTableConfig.PartitionKey,
-            //     Name = "Nikkita",
-            //     Color = "Blanco",
-            //     PetType = "Felino",
-            //     Age = 9
-            // };
-            // await tableClient.AddEntityAsync<Pet>(newPet);
-            var getData = await tableClient.GetEntityIfExistsAsync<Pet>(azureTableConfig.PartitionKey, "9d868c22-4070-4cb5-99ea-80d66aef0b22", default, default);
-            getData.Value.Color = "blanco con cola y cabeza cafe";
-            await tableClient.UpsertEntityAsync<Pet>(getData.Value);
-        }
+            // **** Insert ****
+            Pet newPet = new()
+            {
+                RowKey = Guid.NewGuid().ToString(),
+                PartitionKey = azureTableConfig.PartitionKey,
+                Name = "Michi-chan",
+                Color = "Blanco",
+                PetType = "Felino",
+                Age = 5
+            };
+            await tableClient.AddEntityAsync<Pet>(newPet);
 
-        private static async Task CreateDB(AzureTableConfiguration cosmosConfiguration)
-        {
-            CosmosClient cosmosClient = new CosmosClient(cosmosConfiguration.EndPoint, cosmosConfiguration.Key);
-            var db = cosmosClient.GetDatabase("TablesDB");
+            // **** Get and update data ****
+            // var getData = await tableClient.GetEntityIfExistsAsync<Pet>(azureTableConfig.PartitionKey, "ce37de31-aa30-4748-bc98-e2f2eeb3add8", default, default);
+            // getData.Value.Color = "blanco con cola y cabeza cafe";
+            // await tableClient.UpsertEntityAsync<Pet>(getData.Value);
 
-            // var createdDB = await cosmosClient.CreateDatabaseIfNotExistsAsync(cosmosConfiguration.DatabaseName);
-
-            // var containerProps = new ContainerProperties { Id = cosmosConfiguration.AccountName };
-            // await createdDB.Database.CreateContainerIfNotExistsAsync(containerProps);
-
-            //var db = cosmosClient.GetDatabase(cosmosConfiguration.DatabaseName);
-            // await db.CreateContainerIfNotExistsAsync(containerProps);
-
-            // Base --> https://www.youtube.com/watch?v=DTb4-79aNNo
-            // base 2 --> https://www.youtube.com/watch?v=5ZU2xA_Y3G8
+            // **** Delete data ****
+            // await tableClient.DeleteEntityAsync(azureTableConfig.PartitionKey, "test-02");
 
         }
     }
