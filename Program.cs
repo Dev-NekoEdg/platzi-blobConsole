@@ -35,17 +35,13 @@ namespace platzi_blobConsole
 
             config = builder.Build();
 
-            #region Upload files to AzureContainer
-            /*
-            BlobService.MimetypesAzures = config.GetSection("CommonMIMETypes").Get<Dictionary<string, string>>();
-            var blobSectionConfig = config.GetSection("BlobContainerConfiguration");
-            var blobConfig = BlobService.ConfigureConfig(blobSectionConfig);
-            
-            BlobService.UploadFile(blobConfig);
-            */
-            #endregion
+
         }
 
+        /// <summary>
+        /// CRUD with Azure tables (Cosmos DB).
+        /// </summary>
+        /// <returns></returns>
         private static async Task CosmosDBImplementation()
         {
             var azureTableSectionConfig = config.GetSection("AzureTableConfiguration");
@@ -75,5 +71,23 @@ namespace platzi_blobConsole
             // await tableClient.DeleteEntityAsync(azureTableConfig.PartitionKey, "test-02");
 
         }
+
+        /// <summary>
+        /// Upload files to Azure Blob storage.
+        /// </summary>
+        /// <returns></returns>
+        private static async Task BlobStorage()
+        {
+            #region Upload files to AzureContainer
+
+            BlobService.MimetypesAzures = config.GetSection("CommonMIMETypes").Get<Dictionary<string, string>>();
+            var blobSectionConfig = config.GetSection("BlobContainerConfiguration");
+            var blobConfig = BlobService.ConfigureConfig(blobSectionConfig);
+
+            BlobService.UploadFile(blobConfig);
+
+            #endregion
+        }
+
     }
 }

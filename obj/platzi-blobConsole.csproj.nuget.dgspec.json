@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BackUp\\Proyectos\\platzi-blobConsole\\platzi-blobConsole.csproj": {}
+    "C:\\Users\\Edgar\\source\\repos\\platzi-blobConsole\\platzi-blobConsole.csproj": {}
   },
   "projects": {
-    "D:\\BackUp\\Proyectos\\platzi-blobConsole\\platzi-blobConsole.csproj": {
+    "C:\\Users\\Edgar\\source\\repos\\platzi-blobConsole\\platzi-blobConsole.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BackUp\\Proyectos\\platzi-blobConsole\\platzi-blobConsole.csproj",
+        "projectUniqueName": "C:\\Users\\Edgar\\source\\repos\\platzi-blobConsole\\platzi-blobConsole.csproj",
         "projectName": "platzi-blobConsole",
-        "projectPath": "D:\\BackUp\\Proyectos\\platzi-blobConsole\\platzi-blobConsole.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\BackUp\\Proyectos\\platzi-blobConsole\\obj\\",
+        "projectPath": "C:\\Users\\Edgar\\source\\repos\\platzi-blobConsole\\platzi-blobConsole.csproj",
+        "packagesPath": "C:\\Users\\Edgar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Edgar\\source\\repos\\platzi-blobConsole\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Edgar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -47,6 +43,14 @@
             "Azure.Data.Tables": {
               "target": "Package",
               "version": "[12.8.0, )"
+            },
+            "Azure.Messaging.ServiceBus": {
+              "target": "Package",
+              "version": "[7.17.1, )"
+            },
+            "Azure.Storage.Queues": {
+              "target": "Package",
+              "version": "[12.17.1, )"
             },
             "Microsoft.Azure.Cosmos": {
               "target": "Package",
@@ -93,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
